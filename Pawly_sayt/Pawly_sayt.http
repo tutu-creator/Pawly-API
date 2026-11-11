@@ -1,0 +1,6 @@
+@Pawly_sayt_HostAddress = http://localhost:5020
+
+GET {{Pawly_sayt_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

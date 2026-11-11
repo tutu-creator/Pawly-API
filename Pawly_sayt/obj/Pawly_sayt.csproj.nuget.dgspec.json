@@ -1,0 +1,93 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/tutumehbaliyeva/Desktop/Pawly-backend-public/Pawly_sayt/Pawly_sayt.csproj": {}
+  },
+  "projects": {
+    "/Users/tutumehbaliyeva/Desktop/Pawly-backend-public/Pawly_sayt/Pawly_sayt.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/tutumehbaliyeva/Desktop/Pawly-backend-public/Pawly_sayt/Pawly_sayt.csproj",
+        "projectName": "Pawly_sayt",
+        "projectPath": "/Users/tutumehbaliyeva/Desktop/Pawly-backend-public/Pawly_sayt/Pawly_sayt.csproj",
+        "packagesPath": "/Users/tutumehbaliyeva/.nuget/packages/",
+        "outputPath": "/Users/tutumehbaliyeva/Desktop/Pawly-backend-public/Pawly_sayt/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/tutumehbaliyeva/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Magick.NET-Q8-AnyCPU": {
+              "target": "Package",
+              "version": "[15.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.*, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.*, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.*, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/8.0.421/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
