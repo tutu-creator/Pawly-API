@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elan plakatı - Pawly</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        @page { size: A4; margin: 10mm; }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Fredoka', 'Segoe UI', Arial, sans-serif;
+            background: #EDE7DD;
+            color: #1D231F;
+        }
+
+        /* Ekranda üstdəki idarə paneli (çapda görünmür) */
+        .toolbar {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px;
+        }
+        .toolbar button, .toolbar a {
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 10px 22px;
+            border-radius: 999px;
+            border: 2px solid #E2583E;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .toolbar .primary { background: #E2583E; color: #fff; }
+        .toolbar .secondary { background: #fff; color: #E2583E; }
+
+        /* A4 vərəq (kənar boşluqlardan sonra: 190 x 277 mm) */
+        .poster {
+            width: 190mm;
+            margin: 0 auto 24px;
+            background: #fff;
+            padding: 8mm;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+        }
+
+        .poster-title {
+            text-align: center;
+            font-size: 50px;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: 1px;
+            color: #fff;
+            padding: 12px 10px;
+            border-radius: 10px;
+            margin-bottom: 5mm;
+        }
+        .type-lost .poster-title { background: #D0462C; }
+        .type-stray .poster-title { background: #2E6FD8; }
+        .type-needs_help .poster-title { background: #E28C24; }
+
+        .poster-photo {
+            display: block;
+            width: 100%;
+            height: 85mm;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid #1D231F;
+            margin-bottom: 4mm;
+        }
+
+        .poster-name {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 3mm;
+        }
+
+        .poster-details {
+            font-size: 16px;
+            line-height: 1.45;
+            margin-bottom: 4mm;
+        }
+        .poster-details strong { font-weight: 700; }
+
+        .poster-phone {
+            text-align: center;
+            border: 3px dashed #1D231F;
+            border-radius: 10px;
+            padding: 8px;
+            margin-bottom: 4mm;
+        }
+        .poster-phone .label { font-size: 16px; }
+        .poster-phone .number { font-size: 40px; font-weight: 700; letter-spacing: 1px; line-height: 1.2; }
+
+        .poster-bottom {
+            display: flex;
+            align-items: center;
+            gap: 5mm;
+            break-inside: avoid;
+        }
+        .poster-qr { width: 30mm; height: 30mm; flex-shrink: 0; }
+        .poster-qr img, .poster-qr canvas { width: 100% !important; height: 100% !important; }
+        .poster-qr-text { font-size: 15px; line-height: 1.45; }
+
+        .poster-brand {
+            margin-top: 4mm;
+            text-align: center;
+            font-size: 12px;
+            color: #5C6660;
+        }
+        .poster-brand b { color: #E2583E; }
+
+        .poster-message { text-align: center; padding: 60px 20px; font-size: 1.2rem; }
+
+        @media print {
+            body { background: #fff; }
+            .toolbar { display: none; }
+            .poster { box-shadow: none; margin: 0; width: auto; padding: 0; }
+            .poster-title {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="toolbar">
+    <button type="button" class="primary" id="btn-pdf"><i class="fa-solid fa-file-arrow-down"></i> PDF yüklə</button>
+    <button type="button" class="secondary" id="btn-print"><i class="fa-solid fa-print"></i> Çap et</button>
+    <a href="#" class="secondary" id="btn-back"><i class="fa-solid fa-arrow-left"></i> Elana qayıt</a>
+</div>
+
+<div class="poster" id="poster">
+    <div class="poster-message">Plakat hazırlanır...</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/api.js?v=2"></script>
+<script src="js/main.js?v=2"></script>
+<script src="js/poster.js?v=2"></script>
+</body>
+</html>

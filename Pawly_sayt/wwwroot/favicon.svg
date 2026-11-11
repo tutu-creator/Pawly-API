@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="pawGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F27A59" />
+      <stop offset="100%" stop-color="#E2583E" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#pawGrad)"/>
+  <g fill="#FFFFFF" filter="url(#shadow)">
+    <!-- Main pad -->
+    <path d="M32 30 C24 30 20 37 20 44 C20 48 24 51 32 51 C40 51 44 48 44 44 C44 37 40 30 32 30 Z"/>
+    <!-- Outer left toe -->
+    <ellipse cx="18" cy="26" rx="4.5" ry="6.5" transform="rotate(-20 18 26)"/>
+    <!-- Inner left toe -->
+    <ellipse cx="27" cy="20" rx="4.5" ry="7" transform="rotate(-6 27 20)"/>
+    <!-- Inner right toe -->
+    <ellipse cx="37" cy="20" rx="4.5" ry="7" transform="rotate(6 37 20)"/>
+    <!-- Outer right toe -->
+    <ellipse cx="46" cy="26" rx="4.5" ry="6.5" transform="rotate(20 46 26)"/>
+  </g>
+</svg>

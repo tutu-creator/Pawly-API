@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Məxfilik Siyasəti və İstifadə Şərtləri - Pawly</title>
+    <meta name="description" content="Pawly platformasının məxfilik siyasəti və istifadə şərtləri.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=2">
+    <link rel="stylesheet" href="css/responsive.css?v=2">
+
+    <style>
+        .legal-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 32px;
+            scroll-margin-top: 110px; /* yuxarıdakı sabit menyu başlığı örtməsin */
+        }
+        .legal-card h2 { font-size: 1.7rem; margin-bottom: 8px; }
+        .legal-card h3 { font-size: 1.12rem; margin: 26px 0 8px; }
+        .legal-card p, .legal-card li { color: var(--text-muted); line-height: 1.75; font-size: 0.98rem; }
+        .legal-card ul { padding-left: 22px; margin: 6px 0; }
+        .legal-card li { margin-bottom: 4px; }
+        .legal-card strong { color: var(--text-main); }
+        .legal-note {
+            background: var(--accent-amber-light);
+            border: 1px solid rgba(226, 140, 36, 0.3);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            margin: 14px 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== HEADER (NAVİQASİYA) ==================== -->
+<header class="site-header">
+    <div class="container nav-container">
+        <!-- Loqo -->
+        <a href="index.html" class="brand-logo" id="header-brand-logo">
+            <span class="logo-text-placeholder">Pawl<span class="logo-accent">y</span></span>
+            <span class="logo-icon-wrap"><i class="fa-solid fa-paw"></i></span>
+        </a>
+
+        <!-- Əsas Menyu -->
+        <nav>
+            <ul class="nav-menu" id="primary-nav-menu">
+                <li><a href="index.html" class="nav-link">Ana Səhifə</a></li>
+                <li><a href="listings.html" class="nav-link">Bütün Elanlar</a></li>
+                <li><a href="report-stray.html" class="nav-link">Sahibsiz Heyvan</a></li>
+                <li><a href="report-lost.html" class="nav-link">İtmiş Elan</a></li>
+                <li><a href="report-needs-help.html" class="nav-link">Qayğı Bildirişi</a></li>
+                <li><a href="about.html" class="nav-link">Haqqımızda</a></li>
+            </ul>
+        </nav>
+
+        <!-- Sağ Əməliyyat Düyməsi -->
+        <div class="header-actions">
+            <div class="post-action-wrap">
+                <button type="button" class="btn btn-primary btn-post-dropdown-toggle" id="btn-header-post">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Elan Yerləşdir</span>
+                    <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;margin-left:2px;"></i>
+                </button>
+
+                <!-- Dropdown menyu -->
+                <div class="post-dropdown-menu">
+                    <a href="report-stray.html" class="post-dropdown-item">
+                        <div class="post-dropdown-icon" style="background:var(--accent-blue-light);color:var(--accent-blue);">
+                            <i class="fa-solid fa-paw"></i>
+                        </div>
+                        <div class="post-dropdown-text">
+                            <strong>Sahibsiz Heyvan Bildir</strong>
+                            <span>Küçədə gördüyünüz it/pişiyi qeyd edin</span>
+                        </div>
+                    </a>
+                    <a href="report-lost.html" class="post-dropdown-item">
+                        <div class="post-dropdown-icon" style="background:var(--accent-amber-light);color:var(--accent-amber);">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <div class="post-dropdown-text">
+                            <strong>İtmiş Heyvan Elanı Ver</strong>
+                            <span>İtən ev heyvanınızı tez tapın</span>
+                        </div>
+                    </a>
+                    <a href="report-needs-help.html" class="post-dropdown-item">
+                        <div class="post-dropdown-icon" style="background:var(--primary-light);color:var(--primary);">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <div class="post-dropdown-text">
+                            <strong>Qayğıya Ehtiyacı Olan Heyvan</strong>
+                            <span>Aclıq, susuzluq və ya müalicə üçün</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobil Menyu Açarı -->
+            <button type="button" class="mobile-menu-btn" id="mobile-toggle-btn" aria-label="Menyunu aç">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ƏSAS MƏZMUN -->
+<main class="section">
+    <div class="container" style="max-width: 860px;">
+
+        <div style="margin-bottom: 28px;">
+            <span class="section-tag"><i class="fa-solid fa-scale-balanced"></i> Hüquqi Məlumat</span>
+            <h1 style="font-size: 2.2rem; margin-top: 8px;">Məxfilik Siyasəti və İstifadə Şərtləri</h1>
+            <p style="color:var(--text-muted);">Son yenilənmə: 23 oktyabr 2026</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;">
+                <a href="#privacy" class="btn btn-outline btn-sm"><i class="fa-solid fa-user-shield"></i> Məxfilik Siyasəti</a>
+                <a href="#terms" class="btn btn-outline btn-sm"><i class="fa-solid fa-file-contract"></i> İstifadə Şərtləri</a>
+            </div>
+        </div>
+
+        <!-- ==================== MƏXFİLİK SİYASƏTİ ==================== -->
+        <section class="legal-card" id="privacy">
+            <h2>Məxfilik Siyasəti</h2>
+            <p>Bu sənəd Pawly platformasının hansı məlumatları topladığını, onlardan necə istifadə etdiyini və onları necə qoruduğunu izah edir.</p>
+
+            <h3>1. Biz kimik</h3>
+            <p>Pawly Azərbaycanda sahibsiz, itmiş və qayğıya ehtiyacı olan heyvanlara dəstək üçün yaradılmış qeyri-kommersiya platformasıdır.</p>
+
+            <h3>2. Hansı məlumatları toplayırıq</h3>
+            <ul>
+                <li><strong>Hesab məlumatları:</strong> adınız və e-poçt ünvanınız. Parolunuzu açıq şəkildə saxlamırıq, yalnız onun şifrələnmiş izi saxlanılır. Real parolu biz də görə bilmirik.</li>
+                <li><strong>Elan məlumatları:</strong> elanda yazdığınız mətn, heyvanın məlumatları, şəkillər, ünvan, xəritə koordinatları və əlaqə nömrəsi.</li>
+                <li><strong>Könüllü və əlaqə forması:</strong> adınız, e-poçtunuz, telefon nömrəniz və mesajınız.</li>
+                <li><strong>Şikayətlər:</strong> şikayətin səbəbi və yazdığınız qeyd.</li>
+                <li><strong>Texniki məlumatlar:</strong> təhlükəsizlik məqsədilə giriş cəhdlərinin vaxtı və IP ünvanı. Giriş etdikdə brauzerinizdə giriş vəsiqəsi saxlanılır.</li>
+            </ul>
+            <p>Reklam və izləmə kukiləri, eləcə də analitika xidmətləri istifadə etmirik.</p>
+
+            <h3>3. Məlumatlardan nə üçün istifadə edirik</h3>
+            <ul>
+                <li>Platformanın işləməsi: hesab yaratmaq, daxil olmaq, elanları göstərmək və idarə etmək.</li>
+                <li>Parolun bərpası üçün e-poçt göndərmək.</li>
+                <li>Saxta elanların, spamın və sui-istifadənin qarşısını almaq.</li>
+                <li>Könüllülük və əlaqə müraciətlərinə cavab vermək.</li>
+            </ul>
+
+            <h3>4. Hamıya açıq görünən məlumatlar</h3>
+            <div class="legal-note">
+                <p style="margin:0;"><strong>Diqqət:</strong> elanda yazdığınız məlumatlar (mətn, şəkillər, ünvan, koordinatlar və əlaqə nömrəsi) saytın bütün ziyarətçilərinə görünür. Dəqiq ev ünvanınızı yazmamağı tövsiyə edirik. Telefonla çəkilmiş şəkillərin içində çəkildiyi yerin məlumatı ola bilər.</p>
+            </div>
+            <p>Hesabınızın e-poçt ünvanı digər istifadəçilərə göstərilmir.</p>
+
+            <h3>5. Məlumatları kimlərlə paylaşırıq</h3>
+            <p>Məlumatlarınızı satmırıq və reklam məqsədilə heç kimə vermirik. Platformanın işləməsi üçün aşağıdakı xidmətlərdən istifadə edirik:</p>
+            <ul>
+                <li><strong>Google (Gmail):</strong> parol bərpası və digər bildiriş məktubları Pawly-nin Gmail hesabı vasitəsilə göndərilir. Bunun üçün e-poçt ünvanınız Google-a ötürülür.</li>
+                <li><strong>Hostinq təminatçısı:</strong> saytın və verilənlər bazasının yerləşdiyi server.</li>
+                <li><strong>Google Fonts və Cloudflare CDN:</strong> saytın şriftləri və ikonları bu xidmətlərdən yüklənir. Bu zaman IP ünvanınız onlara görünə bilər.</li>
+            </ul>
+            <p>Qanunvericilikdə nəzərdə tutulmuş hallarda məlumatlar səlahiyyətli dövlət orqanlarına təqdim edilə bilər.</p>
+
+            <h3>6. Məlumatlar nə qədər saxlanılır</h3>
+            <ul>
+                <li>Hesab məlumatları hesabınız silinənə qədər saxlanılır.</li>
+                <li>Elanı sildikdə elan və onun şəkilləri sistemdən silinir.</li>
+                <li>Təhlükəsizlik jurnalları məhdud müddət ərzində saxlanılır.</li>
+            </ul>
+
+            <h3>7. Sizin hüquqlarınız</h3>
+            <p>Azərbaycan Respublikasının "Fərdi məlumatlar haqqında" Qanununa uyğun olaraq siz haqqınızda saxlanılan məlumatlarla tanış olmaq, onların düzəldilməsini və ya silinməsini tələb etmək hüququna maliksiniz. Hesabınızı istənilən vaxt özünüz silə bilərsiniz: <a href="my-listings.html" style="color:var(--primary);font-weight:600;">Mənim elanlarım</a> səhifəsinin aşağısındakı "Hesabı sil" bölməsindən istifadə edin. Hesab silinəndə bütün elanlarınız və şəkilləriniz də birdəfəlik silinir. Digər sorğular üçün <a href="about.html#volunteer-form" style="color:var(--primary);font-weight:600;">əlaqə formu</a> vasitəsilə bizə yazın.</p>
+
+            <h3>8. Təhlükəsizlik</h3>
+            <p>Parollar şifrələnmiş şəkildə saxlanılır, giriş cəhdləri məhdudlaşdırılır və qorunur. Buna baxmayaraq, internetdə heç bir sistem tam təhlükəsiz deyil. Parolunuzu başqası ilə paylaşmayın.</p>
+
+            <h3>9. Yaş məhdudiyyəti</h3>
+            <p>16 yaşından kiçik şəxslər platformadan yalnız valideynlərinin və ya qanuni nümayəndələrinin icazəsi ilə istifadə edə bilər.</p>
+
+            <h3>10. Dəyişikliklər</h3>
+            <p>Bu siyasət yenilənə bilər. Əhəmiyyətli dəyişikliklər olduqda bu səhifədəki "Son yenilənmə" tarixi dəyişdiriləcək.</p>
+
+            <h3>11. Əlaqə</h3>
+            <p>Suallarınız üçün <a href="about.html#volunteer-form" style="color:var(--primary);font-weight:600;">əlaqə formu</a> vasitəsilə bizə yaza bilərsiniz.</p>
+        </section>
+
+        <!-- ==================== İSTİFADƏ ŞƏRTLƏRİ ==================== -->
+        <section class="legal-card" id="terms">
+            <h2>İstifadə Şərtləri</h2>
+            <p>Pawly-dən istifadə etməklə bu şərtləri qəbul etmiş olursunuz.</p>
+
+            <h3>1. Platformanın məqsədi</h3>
+            <p>Pawly sahibsiz, itmiş və qayğıya ehtiyacı olan heyvanlar haqqında məlumat paylaşmaq, itmiş heyvanları sahiblərinə qovuşdurmaq və könüllü yardımı təşkil etmək üçündür. <strong>Platforma heyvanların alqı-satqısı üçün nəzərdə tutulmayıb.</strong></p>
+
+            <h3>2. Hesab</h3>
+            <ul>
+                <li>Qeydiyyat zamanı doğru məlumat verməlisiniz.</li>
+                <li>Parolunuzun qorunmasına siz cavabdehsiniz.</li>
+                <li>Hesabınızla edilən bütün əməliyyatlara görə siz məsuliyyət daşıyırsınız.</li>
+            </ul>
+
+            <h3>3. Qadağan olunan hərəkətlər</h3>
+            <ul>
+                <li>Saxta və ya yanıltıcı elan yerləşdirmək.</li>
+                <li>Heyvan satmaq, reklam və ya kommersiya məqsədli elan vermək.</li>
+                <li>Təhqiramiz, zorakılıq ehtiva edən və ya heyvanlara qəddarlığı təbliğ edən məzmun paylaşmaq.</li>
+                <li>Başqa şəxslərin fərdi məlumatlarını onların icazəsi olmadan paylaşmaq.</li>
+                <li>Spam göndərmək, eyni elanı dəfələrlə yerləşdirmək.</li>
+                <li>Platformanın işinə müdaxilə etmək və ya təhlükəsizliyini pozmağa cəhd etmək.</li>
+            </ul>
+
+            <h3>4. Sizin məzmununuz</h3>
+            <p>Yerləşdirdiyiniz elanlara və şəkillərə görə siz cavabdehsiniz. Elan yerləşdirməklə Pawly-yə həmin məzmunu platformada göstərmək hüququ verirsiniz. Elanınızı istənilən vaxt silə bilərsiniz.</p>
+
+            <h3>5. Moderasiya</h3>
+            <p>İstifadəçilər qaydalara zidd elanlardan şikayət edə bilər. Pawly qaydaları pozan elanları silmək və hesabları xəbərdarlıq etmədən bloklamaq hüququnu özündə saxlayır.</p>
+
+            <h3>6. Məsuliyyətin məhdudlaşdırılması</h3>
+            <p>Pawly istifadəçilər arasında vasitəçidir və elanlardakı məlumatların doğruluğuna zəmanət vermir. İstifadəçilər arasındakı əlaqə və görüşlərə görə məsuliyyət daşımır.</p>
+            <div class="legal-note">
+                <p style="margin:0;"><strong>Təhlükəsizlik tövsiyəsi:</strong> itmiş heyvanı "tapdığını" deyən şəxslə görüşəndə ictimai yer seçin. Heyvanı görmədən heç kimə pul köçürməyin. Bu, itmiş heyvan elanlarında ən çox rast gəlinən fırıldaqçılıq növüdür.</p>
+            </div>
+
+            <h3>7. Şərtlərin dəyişdirilməsi</h3>
+            <p>Bu şərtlər yenilənə bilər. Dəyişiklikdən sonra platformadan istifadəni davam etdirmək yeni şərtləri qəbul etmək deməkdir.</p>
+
+            <h3>8. Tətbiq olunan hüquq</h3>
+            <p>Bu şərtlər Azərbaycan Respublikasının qanunvericiliyinə uyğun olaraq tənzimlənir.</p>
+
+            <h3>9. Əlaqə</h3>
+            <p>Suallarınız üçün <a href="about.html#volunteer-form" style="color:var(--primary);font-weight:600;">əlaqə formu</a> vasitəsilə bizə yaza bilərsiniz.</p>
+        </section>
+
+    </div>
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <!-- Brand Info -->
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo" style="margin-bottom:12px;">
+                    <span style="color:#FAF3E8;">Pawl<span class="logo-accent">y</span></span>
+                    <span class="logo-icon-wrap"><i class="fa-solid fa-paw"></i></span>
+                </a>
+                <p>
+                    Azərbaycanda küçə heyvanlarının rifahını yaxşılaşdırmaq və itmiş ev heyvanlarının sahiblərinə qovuşmasını təmin etmək üçün yaradılmış qeyri-kommersiya təşəbbüsü.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-col">
+                <h4>Səhifələr</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Ana Səhifə</a></li>
+                    <li><a href="listings.html">Bütün Elanlar</a></li>
+                    <li><a href="about.html">Haqqımızda və Missiyamız</a></li>
+                    <li><a href="about.html#faq-section">Tez-tez Verilən Suallar</a></li>
+                    <li><a href="about.html#volunteer-form">Əlaqə & Könüllülük</a></li>
+                </ul>
+            </div>
+
+            <!-- Report Services -->
+            <div class="footer-col">
+                <h4>Bildirişlər</h4>
+                <ul class="footer-links">
+                    <li><a href="report-stray.html">Sahibsiz Heyvan Bildir</a></li>
+                    <li><a href="report-lost.html">İtmiş Ev Heyvanı Elanı</a></li>
+                    <li><a href="report-needs-help.html">Qayğı Bildirişi</a></li>
+                    <li><a href="listings.html?type=lost">İtmiş Heyvanlar Siyahısı</a></li>
+                </ul>
+            </div>
+
+            <!-- Əlaqə məlumatı -->
+            <div class="footer-col">
+                <h4>Əlaqə & Dəstək</h4>
+                <ul class="footer-contact-info">
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Bakı şəhəri, Azərbaycan</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="about.html#volunteer-form">Əlaqə formu</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-clock"></i>
+                        <span>24/7 Elan yerləşdirmə açıqdır</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>© 2026 Pawly. Bütün hüquqlar qorunur.</div>
+            <div style="display:flex;gap:20px;">
+                <a href="legal.html#privacy">Məxfilik Siyasəti</a>
+                <a href="legal.html#terms">İstifadə Şərtləri</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="js/api.js?v=2"></script>
+<script src="js/main.js?v=2"></script>
+</body>
+</html>

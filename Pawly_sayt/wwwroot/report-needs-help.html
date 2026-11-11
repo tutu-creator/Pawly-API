@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bu Heyvana Qayğı Lazımdır - Pawly</title>
+  <meta name="description" content="Aclıq, susuzluq və ya xəstəlik çəkən heyvanı bildirin ki, komandamız gedib heyvanı bəsləsin və qayğı göstərsin.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400..700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/forms.css?v=2">
+  <link rel="stylesheet" href="css/responsive.css?v=2">
+</head>
+<body>
+
+  <!-- ==================== HEADER (NAVİQASİYA) ==================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Loqo -->
+      <a href="index.html" class="brand-logo" id="header-brand-logo">
+        <span class="logo-text-placeholder">Pawl<span class="logo-accent">y</span></span>
+        <span class="logo-icon-wrap"><i class="fa-solid fa-paw"></i></span>
+      </a>
+
+      <!-- Əsas Menyu -->
+      <nav>
+        <ul class="nav-menu" id="primary-nav-menu">
+          <li><a href="index.html" class="nav-link">Ana Səhifə</a></li>
+          <li><a href="listings.html" class="nav-link">Bütün Elanlar</a></li>
+          <li><a href="report-stray.html" class="nav-link">Sahibsiz Heyvan</a></li>
+          <li><a href="report-lost.html" class="nav-link">İtmiş Elan</a></li>
+          <li><a href="report-needs-help.html" class="nav-link active">Qayğı Bildirişi</a></li>
+          <li><a href="about.html" class="nav-link">Haqqımızda</a></li>
+        </ul>
+      </nav>
+
+      <!-- Sağ Əməliyyat Düyməsi -->
+      <div class="header-actions">
+        <div class="post-action-wrap">
+          <button type="button" class="btn btn-primary btn-post-dropdown-toggle" id="btn-header-post">
+            <i class="fa-solid fa-plus"></i>
+            <span>Elan Yerləşdir</span>
+            <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;margin-left:2px;"></i>
+          </button>
+          
+          <!-- Dropdown menyu -->
+          <div class="post-dropdown-menu">
+            <a href="report-stray.html" class="post-dropdown-item">
+              <div class="post-dropdown-icon" style="background:var(--accent-blue-light);color:var(--accent-blue);">
+                <i class="fa-solid fa-paw"></i>
+              </div>
+              <div class="post-dropdown-text">
+                <strong>Sahibsiz Heyvan Bildir</strong>
+                <span>Küçədə gördüyünüz it/pişiyi qeyd edin</span>
+              </div>
+            </a>
+            <a href="report-lost.html" class="post-dropdown-item">
+              <div class="post-dropdown-icon" style="background:var(--accent-amber-light);color:var(--accent-amber);">
+                <i class="fa-solid fa-bullhorn"></i>
+              </div>
+              <div class="post-dropdown-text">
+                <strong>İtmiş Heyvan Elanı Ver</strong>
+                <span>İtən ev heyvanınızı tez tapın</span>
+              </div>
+            </a>
+            <a href="report-needs-help.html" class="post-dropdown-item">
+              <div class="post-dropdown-icon" style="background:var(--primary-light);color:var(--primary);">
+                <i class="fa-solid fa-heart-pulse"></i>
+              </div>
+              <div class="post-dropdown-text">
+                <strong>Qayğıya Ehtiyacı Olan Heyvan</strong>
+                <span>Aclıq, susuzluq və ya müalicə üçün</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobil Menyu Açarı -->
+        <button type="button" class="mobile-menu-btn" id="mobile-toggle-btn" aria-label="Menyunu aç">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ƏSAS MƏZMUN -->
+  <main class="section">
+    <div class="container">
+      <div class="form-page-header">
+        <span class="section-tag" style="background:var(--primary-light);color:var(--primary);">
+          <i class="fa-solid fa-heart-pulse"></i> Qayğı Bildirişi
+        </span>
+        <h1 class="form-page-title">Bu Heyvanın Köməyə Ehtiyacı Var</h1>
+        <p class="form-page-subtitle">
+          Müəyyən ərazidə davamlı gördüyünüz, aclıq/susuzluq çəkən və ya xəstə görünən heyvan haqqında məlumat verin ki, komandamız və könüllülər gedib heyvanı bəsləsin.
+        </p>
+      </div>
+
+      <!-- FORMA KARTI -->
+      <div class="form-card">
+        <form class="animal-report-form" id="needs-help-form" novalidate>
+          <input type="hidden" name="type" value="needs_help">
+          <input type="hidden" name="lat" id="location-lat" value="">
+          <input type="hidden" name="lng" id="location-lng" value="">
+
+          <!-- 1. HEYVAN NÖVÜ -->
+          <div class="form-group">
+            <label class="form-label">
+              Heyvanın növü <span class="req">*</span>
+            </label>
+            <div class="animal-type-grid">
+              <label class="animal-type-card">
+                <input type="radio" name="animalType" value="dog" checked>
+                <div class="animal-card-content">
+                  <i class="fa-solid fa-dog animal-card-icon"></i>
+                  <span class="animal-card-label">İt</span>
+                </div>
+              </label>
+
+              <label class="animal-type-card">
+                <input type="radio" name="animalType" value="cat">
+                <div class="animal-card-content">
+                  <i class="fa-solid fa-cat animal-card-icon"></i>
+                  <span class="animal-card-label">Pişik</span>
+                </div>
+              </label>
+
+              <label class="animal-type-card">
+                <input type="radio" name="animalType" value="other">
+                <div class="animal-card-content">
+                  <i class="fa-solid fa-dove animal-card-icon"></i>
+                  <span class="animal-card-label">Digər</span>
+                </div>
+              </label>
+            </div>
+            <div class="error-message"></div>
+          </div>
+
+          <!-- 2. ŞƏKİL YÜKLƏMƏ -->
+          <div class="form-group">
+            <label class="form-label">
+              Heyvanın cari vəziyyətini göstərən şəkil <span class="req">*</span>
+            </label>
+            <div class="upload-dropzone">
+              <input type="file" class="upload-file-input" id="help-photos" accept="image/*" multiple>
+              <div class="upload-icon">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+              </div>
+              <div class="upload-title">Şəkli buraya yükləyin</div>
+              <div class="upload-sub">Komandamız heyvanın vəziyyətini qiymətləndirmək üçün fotoya ehtiyac duyur</div>
+            </div>
+            
+            <div class="upload-preview-grid"></div>
+            <div class="error-message"></div>
+          </div>
+
+          <!-- ŞƏHƏR -->
+          <div class="form-group">
+            <label class="form-label" for="city">
+              Şəhər <span class="req">*</span>
+            </label>
+            <select class="form-control" name="city" id="city" required>
+              <option value="">Şəhər seçin</option>
+              <option value="Bakı">Bakı</option>
+              <option value="Sumqayıt">Sumqayıt</option>
+              <option value="Xırdalan">Xırdalan</option>
+              <option value="Gəncə">Gəncə</option>
+              <option value="Mingəçevir">Mingəçevir</option>
+              <option value="Şirvan">Şirvan</option>
+              <option value="Lənkəran">Lənkəran</option>
+              <option value="Şəki">Şəki</option>
+              <option value="Naxçıvan">Naxçıvan</option>
+              <option value="Digər">Digər</option>
+            </select>
+            <div class="error-message"></div>
+          </div>
+          
+          <!-- 3. MƏKAN VƏ XƏRİTƏ -->
+          <div class="form-group">
+            <label class="form-label" for="location-address">
+              Heyvanın olduğu dəqiq yer / Ünvan <span class="req">*</span>
+            </label>
+            <div class="location-input-group">
+              <input type="text" class="form-control" name="address" id="location-address" placeholder="Məs: Bakı, Xətai r., Əhmədli qəsəbəsi, Sarayevo küçəsi 14 qarşısı" required>
+              <button type="button" class="btn-geolocation">
+                <i class="fa-solid fa-location-crosshairs"></i>
+                <span>Mənim məkanım</span>
+              </button>
+            </div>
+            <div class="error-message"></div>
+
+            <div class="coords-badge-row">
+              <span id="coords-display-text"><i class="fa-solid fa-satellite"></i> GPS koordinatı</span>
+              <button type="button" style="background:none;border:none;cursor:pointer;color:var(--text-muted);" data-action="hide-parent">&times;</button>
+            </div>
+
+            <!-- Xəritə Placeholder -->
+            <div class="map-placeholder-box" id="map-placeholder">
+              <div class="map-pattern"></div>
+              <div class="map-placeholder-content">
+                <div class="map-pin-pulse" style="color:var(--primary);"><i class="fa-solid fa-truck-medical"></i></div>
+                <div class="map-placeholder-title">Xəritə Naviqasiya Sahəsi</div>
+                <div class="map-placeholder-desc" id="map-coord-status">
+                  Komanda və könüllülər bu koordinatlar vasitəsilə ünvana yönələcək.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. NƏ QƏDƏR MÜDDƏTDİR MÜŞAHİDƏ EDİLİR -->
+          <div class="form-group">
+            <label class="form-label" for="observedDuration">
+              Bu ərazidə nə qədər müddətdir müşahidə edirsiniz? <span class="req">*</span>
+            </label>
+            <select class="form-control" name="observedDuration" id="observedDuration" required>
+              <option value="">Seçin...</option>
+              <option value="İlk dəfədir bu gün gördüm">İlk dəfədir bu gün gördüm</option>
+              <option value="Bir neçə gündür (2-3 gün)">Bir neçə gündür (2-3 gün)</option>
+              <option value="1 həftədən çoxdur">1 həftədən çoxdur</option>
+              <option value="Davamlı olaraq burada yaşayır">Davamlı olaraq bu ərazidə yaşayır</option>
+            </select>
+          </div>
+
+          <!-- 5. VƏZİYYƏTİ İLƏ BAĞLI QEYDLƏR (CHECKBOX-LAR) -->
+          <div class="form-group">
+            <label class="form-label">
+              Heyvanın vəziyyəti ilə bağlı müşahidələriniz <span class="req">*</span>
+            </label>
+            <div class="checkbox-pills-grid">
+              <label class="checkbox-pill-label">
+                <input type="checkbox" name="conditions[]" value="Acdır / Yemək axtarır" checked>
+                <span>🥣 Acdır / Yemək axtarır</span>
+              </label>
+
+              <label class="checkbox-pill-label">
+                <input type="checkbox" name="conditions[]" value="Susuzdur">
+                <span>💧 Susuzdur</span>
+              </label>
+
+              <label class="checkbox-pill-label">
+                <input type="checkbox" name="conditions[]" value="Çox arıq və zəifdir">
+                <span>🦴 Çox arıq və zəifdir</span>
+              </label>
+
+              <label class="checkbox-pill-label">
+                <input type="checkbox" name="conditions[]" value="Yaralıdır / Axsayır">
+                <span>🩹 Yaralıdır / Axsayır</span>
+              </label>
+
+              <label class="checkbox-pill-label">
+                <input type="checkbox" name="conditions[]" value="Gözləri / burnu xəstədir">
+                <span>🩺 Xəstə görünür</span>
+              </label>
+
+              <label class="checkbox-pill-label">
+                <input type="checkbox" name="conditions[]" value="Təcili baytar baxışı lazımdır">
+                <span>🚨 Təcili yardım lazımdır</span>
+              </label>
+
+              <label class="checkbox-pill-label">
+                <input type="checkbox" name="conditions[]" value="Körpə balaları var">
+                <span>🐾 Körpə balaları var</span>
+              </label>
+
+              <label class="checkbox-pill-label">
+                <input type="checkbox" name="conditions[]" value="Soyuqdan donur / Yuvası yoxdur">
+                <span>❄️ İsti sığınacağa möhtacdır</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 6. ƏTRAFLI QEYDLƏR -->
+          <div class="form-group">
+            <label class="form-label" for="description">
+              Ətraflı qeyd və tövsiyələr <span class="req">*</span>
+            </label>
+            <textarea class="form-control" name="description" id="description" placeholder="Məsələn: Heyvan binanın arxasındakı pilləkənlərin altında yatır, insanlardan qorxur, yaxınlaşanda qaçır amma quru yemək qoyanda gəlib yeyir..." required></textarea>
+            <div class="error-message"></div>
+          </div>
+
+          <!-- 7. ƏLAQƏ MƏLUMATI (OPSİONAL) -->
+          <div class="form-group">
+            <label class="form-label" for="contactInfo">
+              Əlaqə nömrəniz və ya adınız <span class="opt">(könüllü)</span>
+            </label>
+            <input type="text" class="form-control" name="contactInfo" id="contactInfo" placeholder="+994 50 000 00 00">
+            <div class="form-hint">Əraziyə gedən könüllülərimiz məkanı dəqiqləşdirmək üçün sizinlə əlaqə saxlaya bilər.</div>
+          </div>
+
+          <!-- GÖNDƏR DÜYMƏSİ -->
+          <div class="form-submit-row">
+            <a href="index.html" class="btn btn-outline">İmtina et</a>
+            <button type="submit" class="btn btn-primary btn-lg" id="btn-submit-needs-help">
+              <i class="fa-solid fa-heart-circle-bolt"></i>
+              <span>Qayğı Bildirişini Göndər</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" style="margin-bottom:12px;">
+            <span style="color:#FAF3E8;">Pawl<span class="logo-accent">y</span></span>
+            <span class="logo-icon-wrap"><i class="fa-solid fa-paw"></i></span>
+          </a>
+          <p>
+            Azərbaycanda küçə heyvanlarının rifahını yaxşılaşdırmaq və itmiş ev heyvanlarının sahiblərinə qovuşmasını təmin etmək üçün yaradılmış qeyri-kommersiya təşəbbüsü.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4>Səhifələr</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Ana Səhifə</a></li>
+            <li><a href="listings.html">Bütün Elanlar</a></li>
+            <li><a href="about.html">Haqqımızda və Missiyamız</a></li>
+            <li><a href="about.html#faq-section">Tez-tez Verilən Suallar</a></li>
+            <li><a href="about.html#volunteer-form">Əlaqə & Könüllülük</a></li>
+          </ul>
+        </div>
+
+        <!-- Report Services -->
+        <div class="footer-col">
+          <h4>Bildirişlər</h4>
+          <ul class="footer-links">
+            <li><a href="report-stray.html">Sahibsiz Heyvan Bildir</a></li>
+            <li><a href="report-lost.html">İtmiş Ev Heyvanı Elanı</a></li>
+            <li><a href="report-needs-help.html">Qayğı Bildirişi</a></li>
+            <li><a href="listings.html?type=lost">İtmiş Heyvanlar Siyahısı</a></li>
+          </ul>
+        </div>
+
+        <!-- Əlaqə məlumatı -->
+        <div class="footer-col">
+          <h4>Əlaqə & Dəstək</h4>
+          <ul class="footer-contact-info">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Bakı şəhəri, Azərbaycan</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <a href="about.html#volunteer-form">Əlaqə formu</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-clock"></i>
+              <span>24/7 Elan yerləşdirmə açıqdır</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Pawly. Bütün hüquqlar qorunur.</div>
+        <div style="display:flex;gap:20px;">
+          <a href="legal.html#privacy">Məxfilik Siyasəti</a>
+          <a href="legal.html#terms">İstifadə Şərtləri</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="js/api.js?v=2"></script>
+  <script src="js/main.js?v=2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="js/map.js?v=2"></script>
+  <script src="js/forms.js?v=2"></script>
+</body>
+</html>

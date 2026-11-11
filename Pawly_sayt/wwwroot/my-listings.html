@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mənim Elanlarım - Pawly</title>
+  <meta name="description" content="Azərbaycan üzrə sahibsiz heyvanlar, itmiş ev heyvanları və qayğıya ehtiyacı olan heyvanların axtarışı və siyahısı.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400..700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/responsive.css?v=2">
+</head>
+<body>
+
+  <!-- ==================== HEADER (NAVİQASİYA) ==================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Loqo -->
+      <a href="index.html" class="brand-logo" id="header-brand-logo">
+        <span class="logo-text-placeholder">Pawl<span class="logo-accent">y</span></span>
+        <span class="logo-icon-wrap"><i class="fa-solid fa-paw"></i></span>
+      </a>
+
+      <!-- Əsas Menyu -->
+      <nav>
+        <ul class="nav-menu" id="primary-nav-menu">
+          <li><a href="index.html" class="nav-link">Ana Səhifə</a></li>
+          <li><a href="listings.html" class="nav-link">Bütün Elanlar</a></li>
+          <li><a href="report-stray.html" class="nav-link">Sahibsiz Heyvan</a></li>
+          <li><a href="report-lost.html" class="nav-link">İtmiş Elan</a></li>
+          <li><a href="report-needs-help.html" class="nav-link">Qayğı Bildirişi</a></li>
+          <li><a href="about.html" class="nav-link">Haqqımızda</a></li>
+        </ul>
+      </nav>
+
+      <!-- Sağ Əməliyyat Düyməsi -->
+      <div class="header-actions">
+        <div class="post-action-wrap">
+          <button type="button" class="btn btn-primary btn-post-dropdown-toggle" id="btn-header-post">
+            <i class="fa-solid fa-plus"></i>
+            <span>Elan Yerləşdir</span>
+            <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;margin-left:2px;"></i>
+          </button>
+          
+          <!-- Dropdown menyu -->
+          <div class="post-dropdown-menu">
+            <a href="report-stray.html" class="post-dropdown-item">
+              <div class="post-dropdown-icon" style="background:var(--accent-blue-light);color:var(--accent-blue);">
+                <i class="fa-solid fa-paw"></i>
+              </div>
+              <div class="post-dropdown-text">
+                <strong>Sahibsiz Heyvan Bildir</strong>
+                <span>Küçədə gördüyünüz it/pişiyi qeyd edin</span>
+              </div>
+            </a>
+            <a href="report-lost.html" class="post-dropdown-item">
+              <div class="post-dropdown-icon" style="background:var(--accent-amber-light);color:var(--accent-amber);">
+                <i class="fa-solid fa-bullhorn"></i>
+              </div>
+              <div class="post-dropdown-text">
+                <strong>İtmiş Heyvan Elanı Ver</strong>
+                <span>İtən ev heyvanınızı tez tapın</span>
+              </div>
+            </a>
+            <a href="report-needs-help.html" class="post-dropdown-item">
+              <div class="post-dropdown-icon" style="background:var(--primary-light);color:var(--primary);">
+                <i class="fa-solid fa-heart-pulse"></i>
+              </div>
+              <div class="post-dropdown-text">
+                <strong>Qayğıya Ehtiyacı Olan Heyvan</strong>
+                <span>Aclıq, susuzluq və ya müalicə üçün</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobil Menyu Açarı -->
+        <button type="button" class="mobile-menu-btn" id="mobile-toggle-btn" aria-label="Menyunu aç">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ƏSAS MƏZMUN -->
+  <main class="section">
+    <div class="container">
+
+      <!-- Səhifə Başlığı -->
+      <div style="margin-bottom: 32px;">
+        <span class="section-tag"><i class="fa-solid fa-list-check"></i> Şəxsi Kabinet</span>
+        <h1 style="font-size: 2.3rem; margin-top: 8px;">Mənim Elanlarım</h1>
+        <p style="color:var(--text-muted);font-size:1.05rem;max-width:640px;">
+          Burada yalnız sizin verdiyiniz elanlar görünür. Heyvan tapılıbsa "Tapıldı" düyməsinə basın, lazım deyilsə elanı silin.
+        </p>
+      </div>
+
+      <!-- Say -->
+      <div class="results-header">
+        <div class="results-count">
+          Cəmi <strong id="my-total-count">0</strong> elanınız var
+        </div>
+      </div>
+
+      <!-- Elanlar şəbəkəsi (JS doldurur) -->
+      <div class="listings-grid" id="my-listings-container"></div>
+
+      <!-- Elan yoxdursa -->
+      <div class="empty-state" id="my-empty-state" style="display:none;">
+        <div class="empty-state-icon">
+          <i class="fa-solid fa-paw"></i>
+        </div>
+        <h3>Hələ elanınız yoxdur</h3>
+        <p>İlk elanınızı yerləşdirin, heyvana kömək etmək şansını artırın.</p>
+        <a href="report-lost.html" class="btn btn-primary">
+          <i class="fa-solid fa-plus"></i> Elan yerləşdir
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" style="margin-bottom:12px;">
+            <span style="color:#FAF3E8;">Pawl<span class="logo-accent">y</span></span>
+            <span class="logo-icon-wrap"><i class="fa-solid fa-paw"></i></span>
+          </a>
+          <p>
+            Azərbaycanda küçə heyvanlarının rifahını yaxşılaşdırmaq və itmiş ev heyvanlarının sahiblərinə qovuşmasını təmin etmək üçün yaradılmış qeyri-kommersiya təşəbbüsü.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4>Səhifələr</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Ana Səhifə</a></li>
+            <li><a href="listings.html">Bütün Elanlar</a></li>
+            <li><a href="about.html">Haqqımızda və Missiyamız</a></li>
+            <li><a href="about.html#faq-section">Tez-tez Verilən Suallar</a></li>
+            <li><a href="about.html#volunteer-form">Əlaqə & Könüllülük</a></li>
+          </ul>
+        </div>
+
+        <!-- Report Services -->
+        <div class="footer-col">
+          <h4>Bildirişlər</h4>
+          <ul class="footer-links">
+            <li><a href="report-stray.html">Sahibsiz Heyvan Bildir</a></li>
+            <li><a href="report-lost.html">İtmiş Ev Heyvanı Elanı</a></li>
+            <li><a href="report-needs-help.html">Qayğı Bildirişi</a></li>
+            <li><a href="listings.html?type=lost">İtmiş Heyvanlar Siyahısı</a></li>
+          </ul>
+        </div>
+
+        <!-- Əlaqə məlumatı -->
+        <div class="footer-col">
+          <h4>Əlaqə & Dəstək</h4>
+          <ul class="footer-contact-info">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Bakı şəhəri, Azərbaycan</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <a href="about.html#volunteer-form">Əlaqə formu</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-clock"></i>
+              <span>24/7 Elan yerləşdirmə açıqdır</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Pawly. Bütün hüquqlar qorunur.</div>
+        <div style="display:flex;gap:20px;">
+          <a href="legal.html#privacy">Məxfilik Siyasəti</a>
+          <a href="legal.html#terms">İstifadə Şərtləri</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="js/api.js?v=2"></script>
+  <script src="js/main.js?v=2"></script>
+  <script src="js/my-listings.js?v=2"></script>
+</body>
+</html>
